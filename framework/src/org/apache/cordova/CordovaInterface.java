@@ -17,8 +17,7 @@
        under the License.
 */
 package org.apache.cordova;
-
-import android.app.Activity;
+import androidx.fragment.app.FragmentActivity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -56,7 +55,7 @@ public interface CordovaInterface {
      *
      * @return the Activity
      */
-    public abstract Activity getActivity();
+    public abstract FragmentActivity getActivity();
 
     /**
      * Get the Android context.

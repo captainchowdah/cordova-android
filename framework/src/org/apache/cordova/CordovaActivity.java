@@ -42,6 +42,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * This class is the main Android activity that represents the Cordova
@@ -74,7 +75,7 @@ import android.widget.FrameLayout;
  * deprecated in favor of the config.xml file.
  *
  */
-public class CordovaActivity extends Activity {
+public class CordovaActivity extends FragmentActivity {
     public static String TAG = "CordovaActivity";
 
     // The webview for our app

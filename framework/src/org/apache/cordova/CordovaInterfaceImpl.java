@@ -20,7 +20,7 @@
 package org.apache.cordova;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import androidx.fragment.app.FragmentActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -39,7 +39,7 @@ import java.util.concurrent.Executors;
  */
 public class CordovaInterfaceImpl implements CordovaInterface {
     private static final String TAG = "CordovaInterfaceImpl";
-    protected Activity activity;
+    protected FragmentActivity activity;
     protected ExecutorService threadPool;
     protected PluginManager pluginManager;
 
@@ -51,11 +51,11 @@ public class CordovaInterfaceImpl implements CordovaInterface {
     protected boolean activityWasDestroyed = false;
     protected Bundle savedPluginState;
 
-    public CordovaInterfaceImpl(Activity activity) {
+    public CordovaInterfaceImpl(FragmentActivity activity) {
         this(activity, Executors.newCachedThreadPool());
     }
 
-    public CordovaInterfaceImpl(Activity activity, ExecutorService threadPool) {
+    public CordovaInterfaceImpl(FragmentActivity activity, ExecutorService threadPool) {
         this.activity = activity;
         this.threadPool = threadPool;
         this.permissionResultCallbacks = new CallbackMap();
@@ -76,13 +76,13 @@ public class CordovaInterfaceImpl implements CordovaInterface {
     public void setActivityResultCallback(CordovaPlugin plugin) {
         // Cancel any previously pending activity.
         if (activityResultCallback != null) {
-            activityResultCallback.onActivityResult(activityResultRequestCode, Activity.RESULT_CANCELED, null);
+            activityResultCallback.onActivityResult(activityResultRequestCode, FragmentActivity.RESULT_CANCELED, null);
         }
         activityResultCallback = plugin;
     }
 
     @Override
-    public Activity getActivity() {
+    public FragmentActivity getActivity() {
         return activity;
     }
 
